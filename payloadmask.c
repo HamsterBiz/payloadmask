@@ -46,7 +46,7 @@ void init_banner_mask()
 {
  puts(
  GREEN
-   "\n   ...:::_PAYLOAD:MASK_:::...    v0.1        \n"                      
+   "\n   ...:::_PAYLOAD:MASK_:::...    v0.2        \n"                      
    "     Just another payload lists editor to bypass WAF              \n\n" 
  YELLOW
  LAST
