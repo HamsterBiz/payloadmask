@@ -79,7 +79,7 @@ char *replace(char *instring,char *old,char *new)
  	if(instring_size<old_size || !old_size)
 	{       
 		strcpy(out, instring);
- 		free(tmp);
+ 		XFREE(tmp);
 		return out;
 	}   
 
@@ -89,19 +89,21 @@ char *replace(char *instring,char *old,char *new)
 	{       
 		strncpy(tmp,(instring+count),old_size);
 		tmp[old_size]='\0';
+
 		if(!strcmp(tmp,old))
 		{
 			if(new_size!=old_size)
 			{
 				out_size=out_size+new_size-old_size;
-				out=xrealloc(out,out_size);
+				out=xreallocarray(out,out_size,sizeof(char));
 
 				if(!out)
 				{
-					free(tmp);
+					XFREE(tmp);
 					return NULL;
 				}
 			}
+
 			strcat(out,new);
 			count=count+old_size-1;
 		}else{
@@ -112,7 +114,7 @@ char *replace(char *instring,char *old,char *new)
 		count++;
 	}
 
-	free(tmp);
+	XFREE(tmp);
 
 	return out;
 }

@@ -52,15 +52,14 @@ void convert_payload(char * NameFile,char *output, char *tamper)
 		{
 			char *newline=encode64(line,strlen(line)-1);
 			WriteFile(output,newline);
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 		if(strstr(tamper,"randcase"))
 		{
 			char *newline=rand_case(line);	
 			WriteFile(output,newline);
-		
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 
@@ -68,32 +67,28 @@ void convert_payload(char * NameFile,char *output, char *tamper)
 		{
 			char *newline=urlencode(line);	
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 		if(strstr(tamper,"double_urlencode"))
 		{
 			char *newline=double_urlencode(line);	
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 		if(strstr(tamper,"spaces2comment"))
 		{
 			char *newline=spaces2comment(line);	
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 		if(strstr(tamper,"unmagicquote"))
 		{
 			char *newline=unmagicquote(line);	
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 
@@ -101,17 +96,14 @@ void convert_payload(char * NameFile,char *output, char *tamper)
 		{
 			char *newline=apostrophe2nullencode(line);	
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 		if(strstr(tamper,"rand_comment"))
 		{
 			char *newline=rand_comment(line);	
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
-		
+			XFREE(newline);
 		}
 
 
@@ -120,8 +112,7 @@ void convert_payload(char * NameFile,char *output, char *tamper)
 		{
 			char *newline=rand_space(line);
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 
 
@@ -129,8 +120,7 @@ void convert_payload(char * NameFile,char *output, char *tamper)
 		{
 			char *newline=replace_keywords(line);
 			WriteFile(output,newline);
-
-			xfree((void **)&newline);
+			XFREE(newline);
 		}
 		
 		
